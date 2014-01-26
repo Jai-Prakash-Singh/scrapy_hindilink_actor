@@ -71,11 +71,13 @@ class DmozSpider(BaseSpider):
 
     def __init__(self):
         ip_port = choice(ip_list)
-        prox = "--proxy=%s"%ip_port
-        service_args = [prox, '--proxy-type=http',]
-        #service_args = [prox, '--proxy-auth=SuperVIP79755:2GVkM4MIii', '--proxy-type=http',]
+        user_pass = ip_port.split("@")[1].strip()
+        prox = "--proxy=%s"%ip_port.split("@")[0].strip()
+        service_args = [prox, '--proxy-auth='+user_pass, '--proxy-type=http',]
+
+        #service_args = [prox, '--proxy-type=http',]
         self.driver = webdriver.PhantomJS(service_args =service_args)
-        self.driver = webdriver.PhantomJS()
+        #self.driver = webdriver.PhantomJS()
         
 
     def __del__(self):
