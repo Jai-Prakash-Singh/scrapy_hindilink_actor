@@ -31,54 +31,45 @@ f.close()
 
 
 class DmozSpider(BaseSpider):
+    
     name = "page4_link_to_linkii"
-
     allowed_domains = ["hindilinks4u.net"]
-    
-    extracted_link = []
- 
-    try:
-        extracted_f  =  open("page4_watch_link__emlink")
 
-        for l in extracted_f:
-            extracted_link.append(l.split(",")[0])
+    def __init__(self, aval_urls=' '):
 
-	extracted_f.close()
-    except:
-       pass
-    
-  
-    f = open("page3_watch_link")
+        extracted_link = []
 
-    aval_urls = f.read().strip().split("\n")
-    val = len(aval_urls)/10
-    aval_urls = aval_urls[:val]
+        try:
+            extracted_f  =  open("page4_watch_link__emlink")
 
-    start_urls =  list(set(aval_urls) - set(extracted_link))
-    #print type(start_urls)
-    #sys.exit()
-    f.close()
+            for l in extracted_f:
+                extracted_link.append(l.split(",")[0])
 
-    print len(start_urls) ,  len(extracted_link)    
+            extracted_f.close()
 
-    if len(start_urls) - len(extracted_link) ==0:
-        sys.exit()
-            
+        except:
+           pass
+         
+        aval_urls = aval_urls.split(",")
+        self.start_urls =  list(set(aval_urls) - set(extracted_link))
 
+        print len(self.start_urls) ,  len(extracted_link)
 
-    def __init__(self):
+        if len(self.start_urls) - len(extracted_link) ==0:
+            return 0
+
+       
         ip_port = choice(ip_list)
         user_pass = ip_port.split("@")[1].strip()
         prox = "--proxy=%s"%ip_port.split("@")[0].strip()
         service_args = [prox, '--proxy-auth='+user_pass, '--proxy-type=http',]
         #service_args = [prox, '--proxy-type=http',]
         self.driver = webdriver.PhantomJS(service_args =service_args)
-        #self.driver = webdriver.PhantomJS()
         
+
 
     def __del__(self):
         self.driver.close()
-
 
      
 

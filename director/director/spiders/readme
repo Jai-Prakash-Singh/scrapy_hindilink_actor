@@ -37,7 +37,7 @@ python page3_into_database.py
         # table ml_mn_typ_part_wl
 	# insert into ml_mn_typ_part_wl (movielink, movie, type, part, watchlink) values ("%s", "%s", "%s", "%s", "%s")"""%(values)
         
-scrapy runspider page4_link_to_link.py
+#scrapy runspider page4_link_to_link.py
 	# open file "page4_watch_link__emlink"
 	# extract watch links it avail 
 	# appand it to list extract_links 
@@ -49,16 +49,21 @@ scrapy runspider page4_link_to_link.py
 	# open file "page4_watch_link__emlink"
 	# insert [watch_links, embed_links]
 
-scrapy runspider page42_link_to_link.py
-scrapy runspider page43_link_to_link.py
-scrapy runspider page44_link_to_link.py
-scrapy runspider page45_link_to_link.py
-scrapy runspider page46_link_to_link.py
-scrapy runspider page47_link_to_link.py
-scrapy runspider page48_link_to_link.py
-scrapy runspider page49_link_to_link.py
-scrapy runspider page410_link_to_link.py
+python  page4_threads.py
+	# open file "page3_watch_link"
+	# extracted all links from it 
+	# devide into 15 parts
+	# take fist qutiient pass it to 
+	# ['scrapy', 'crawl',  'page4_link_to_linkii', '-a', 'aval_urls='+avail_urls2]
+	# through subprocess
 
+
+#page4_link_to_link.py or page4_link_to_linkii
+	# take quotient
+	# open file "page4_watch_link__emlink"
+        # take extracted links of watch_vidio
+	# self.start_urls =  list(set(aval_urls) - set(extracted_link)
+	# collect watch links and embed links add to page4_watch_link__emlink 
 
 python python  page4_into_database.py
 	# open file "page4_watch_link__emlink"
