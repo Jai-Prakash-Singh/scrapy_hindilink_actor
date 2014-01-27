@@ -17,7 +17,14 @@ def main():
     f  = open("page3_ml_mn_tp_prt_wt")
     for l in f:
         values = tuple(l.split(","))
+       
         try:
+            val1 = values[0].strip()
+            val2 = values[1].strip()
+            val3 = values[2].strip()
+            val4 =  values[3].strip()
+            val5 = values[4].strip()
+            values = val1,val2,val3,val4,val5
 	    sql = """insert into ml_mn_typ_part_wl (movielink, movie, type, part, watchlink) values ("%s", "%s", "%s", "%s", "%s")"""%(values)
             print sql
 	    cursor.execute(sql)

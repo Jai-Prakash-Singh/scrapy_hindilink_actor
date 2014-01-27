@@ -70,4 +70,11 @@ python python  page4_into_database.py
 	# collect [watch_links, embed_links]
 	#  insert into databases wl_em
 	# sql = """insert into wl_em (watchlink, embedlink) values ("%s", "%s")"""%(values)
-        
+
+
+query 
+	# select a.actor , a.actorlink, a.movie, a.movielink, b.type, b.part, b.watchlink , c.embedlink  into outfile "/tmp/hindilink_actor6-27.csv" FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '\\' LINES TERMINATED BY '\n'  from actor_actorlink_movie_movielink a join ml_mn_typ_part_wl b on a.movielink = b.movielink join wl_em c on c.watchlink = b.watchlink ;        
+
+sort 
+	# sort hindilink_actor6-27.csv | uniq -u >> hindilink_actor7-27.csv
+

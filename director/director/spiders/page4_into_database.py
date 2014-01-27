@@ -17,6 +17,9 @@ def main():
     for l in f:
         values = tuple(l.split(","))
         try:
+            val1 = values[0].strip()
+            val2 = values[1].strip()
+            values = val1,val2
 	    sql = """insert into wl_em (watchlink, embedlink) values ("%s", "%s")"""%(values)
             print sql
 	    cursor.execute(sql)

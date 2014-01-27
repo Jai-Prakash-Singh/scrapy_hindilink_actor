@@ -3,7 +3,7 @@ import subprocess
 from Queue import Queue
 from threading import Thread
 
-num_fetch_threads = 5
+num_fetch_threads = 2
 enclosure_queue = Queue()
 
 
